@@ -1,23 +1,29 @@
-// src/App.js
-import React from 'react';
-import useHello from './hooks/useHello';
-import {BrowserRouter} from "react-router-dom";
-import {Routes, Route} from "react-router-dom";
+import {Component} from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import SearchHeader from './components/SearchHeader';
+import Home from './components/Home';
+import Search from './components/Search';
 
-function App() {
-  const hello = useHello();
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+    };
+  }
 
-  return (
-    <div className="App">
+  render(){
+    return (
+      <div className='App'>
         <BrowserRouter>
-            <Header/>
-            <Routes>
-                <Route path="/" element={<h1>HOME</h1>} />
-                <Route path="/profile" element={<h1>ABOUT</h1>} />
-            </Routes>
+          <SearchHeader/>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/search" element={<Search/>} />
+          </Routes>
         </BrowserRouter>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
